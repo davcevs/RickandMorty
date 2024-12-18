@@ -23,7 +23,7 @@ const App = () => {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
-      <div className="fixed flex-col bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 to-transparent border-t border-gray-800/50 backdrop-blur-sm">
+      <div className="fixed flex-col bottom-0 left-0 right-0 z-50">
         <Footer />
       </div>
       <ChatBot />
