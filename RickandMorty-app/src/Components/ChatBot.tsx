@@ -52,11 +52,11 @@ const ChatBot = () => {
   const toggleChat = () => setIsOpen(!isOpen);
 
   return (
-    <div className="fixed bottom-16 right-4 z-50">
+    <div className="fixed bottom-2 right-4 z-50 ">
       {/* Chatbot Button */}
       {!isOpen && (
         <motion.div
-          className="flex items-center space-x-3 bg-gradient-to-r from-green-500 to-teal-500 text-white p-3 rounded-full shadow-xl hover:scale-105 cursor-pointer"
+          className="flex items-center space-x-1 bg-gradient-to-r from-green-500 to-teal-500 text-white p-3 rounded-full shadow-xl hover:scale-105 cursor-pointer"
           onClick={toggleChat}
           whileHover={{ rotate: 5, scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
