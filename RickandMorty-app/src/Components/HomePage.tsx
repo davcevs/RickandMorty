@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -17,10 +17,9 @@ import { Character, CharactersResponse } from "../types/Character";
 
 interface FloatingCardProps {
   character: Character;
-  index: number;
 }
 
-const FloatingCard = ({ character, index }: FloatingCardProps) => {
+const FloatingCard = ({ character }: FloatingCardProps) => {
   const controls = useAnimation();
   const startPosition = {
     x: Math.random() * window.innerWidth,
@@ -143,12 +142,8 @@ const HomePage = () => {
 
       {/* Floating Character Cards */}
       <div className="absolute inset-0 pointer-events-none">
-        {floatingCharacters.map((character, index) => (
-          <FloatingCard
-            key={character.id}
-            character={character}
-            index={index}
-          />
+        {floatingCharacters.map((character) => (
+          <FloatingCard key={character.id} character={character} />
         ))}
       </div>
 

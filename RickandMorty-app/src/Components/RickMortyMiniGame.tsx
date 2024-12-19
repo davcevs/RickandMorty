@@ -383,7 +383,7 @@ const RickMortyMiniGame = () => {
                 {t("game_over", "Game Over!")}
               </h2>
 
-              <div className="grid grid-cols-2 gap-6 mb-8 w-full max-w-lg">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 w-full max-w-2xl">
                 <div className="bg-white/10 p-6 rounded-xl border border-yellow-400/30">
                   <Star className="mx-auto mb-3 text-yellow-400" />
                   <p className="text-lg">
@@ -400,6 +400,29 @@ const RickMortyMiniGame = () => {
                     {t("high_score", "High Score")}
                     <span className="block text-3xl font-bold text-yellow-400 mt-2">
                       {highScore}
+                    </span>
+                  </p>
+                </div>
+
+                <div className="bg-white/10 p-6 rounded-xl border border-yellow-400/30">
+                  <Target className="mx-auto mb-3 text-yellow-400" />
+                  <p className="text-lg">
+                    {t("accuracy", "Accuracy")}
+                    <span className="block text-3xl font-bold text-yellow-400 mt-2">
+                      {totalAttempts > 0
+                        ? Math.round((totalCorrect / totalAttempts) * 100)
+                        : 0}
+                      %
+                    </span>
+                  </p>
+                </div>
+
+                <div className="bg-white/10 p-6 rounded-xl border border-yellow-400/30">
+                  <Zap className="mx-auto mb-3 text-yellow-400" />
+                  <p className="text-lg">
+                    {t("correct_answers", "Correct Answers")}
+                    <span className="block text-3xl font-bold text-yellow-400 mt-2">
+                      {totalCorrect}
                     </span>
                   </p>
                 </div>

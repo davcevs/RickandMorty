@@ -85,7 +85,7 @@ const MainComponent = () => {
     loadMoreCharacters();
   }, [inView, data?.characters.info.next, page, filters, fetchMore]);
 
-  const translateCharacterField = (field: string, value: string) => {
+  const translateCharacterField = (value: string) => {
     const translations = {
       // Status
       [`${Status.Alive}`]: t("alive"),
@@ -258,6 +258,15 @@ const MainComponent = () => {
               Error: {error.message}
             </motion.div>
           )}
+          {isFiltering && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex justify-center items-center py-4"
+            >
+              <div className="animate-spin rounded-full h-8 w-8 border-4 border-yellow-400 border-t-transparent"></div>
+            </motion.div>
+          )}
 
           {/* Character Grid */}
           <AnimatePresence mode="wait">
@@ -305,24 +314,15 @@ const MainComponent = () => {
                       {[
                         {
                           label: t("status"),
-                          value: translateCharacterField(
-                            "status",
-                            character.status
-                          ),
+                          value: translateCharacterField(character.status),
                         },
                         {
                           label: t("species"),
-                          value: translateCharacterField(
-                            "species",
-                            character.species
-                          ),
+                          value: translateCharacterField(character.species),
                         },
                         {
                           label: t("gender"),
-                          value: translateCharacterField(
-                            "gender",
-                            character.gender
-                          ),
+                          value: translateCharacterField(character.gender),
                         },
                         {
                           label: t("origin"),
