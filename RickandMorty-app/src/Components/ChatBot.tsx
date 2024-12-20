@@ -8,7 +8,7 @@ const rickAndMortyQuotes = [
   "Wubba Lubba Dub-Dub!",
   "Get your shit together, Morty!",
   "Nobody exists on purpose. Nobody belongs anywhere. We're all going to die. Come watch TV.",
-  "The universe is a huge, messed-up place, and we’re all just along for the ride.",
+  "The universe is a huge, messed-up place, and we're all just along for the ride.",
 ];
 
 const ChatBot = () => {
@@ -18,13 +18,13 @@ const ChatBot = () => {
 
   const { data } = useQuery(GET_CHARACTERS, {
     variables: { page: Math.floor(Math.random() * 42) + 1 },
+    fetchPolicy: "cache-first",
   });
 
   useEffect(() => {
     if (data) {
       const characters = data.characters.results;
-      const charactersCopy = [...characters];
-      const randomImages = charactersCopy
+      const randomImages = [...characters]
         .sort(() => 0.5 - Math.random())
         .slice(0, 1)
         .map((character: { image: string }) => character.image);
@@ -39,8 +39,7 @@ const ChatBot = () => {
 
     if (data) {
       const characters = data.characters.results;
-      const charactersCopy = [...characters];
-      const randomImages = charactersCopy
+      const randomImages = [...characters]
         .sort(() => 0.5 - Math.random())
         .slice(0, 1)
         .map((character: { image: string }) => character.image);

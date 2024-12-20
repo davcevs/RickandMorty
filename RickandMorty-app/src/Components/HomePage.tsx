@@ -21,14 +21,22 @@ interface FloatingCardProps {
 
 const FloatingCard = ({ character }: FloatingCardProps) => {
   const controls = useAnimation();
+  const [mounted, setMounted] = useState(false);
   const startPosition = {
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
   };
 
   useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const animate = async () => {
-      while (true) {
+      while (mounted) {
         await controls.start({
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
@@ -40,7 +48,7 @@ const FloatingCard = ({ character }: FloatingCardProps) => {
       }
     };
     animate();
-  }, [controls]);
+  }, [controls, mounted]);
 
   return (
     <motion.div
